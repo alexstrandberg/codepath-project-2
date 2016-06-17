@@ -21,6 +21,8 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     var firstLoadDone = false
     
+    var endpoint = "now_playing"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -100,7 +102,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         // ... Create the NSURLRequest (myRequest) ...
         let apiKey = "913e82319bc3dfdc258ee027afa67cf3"
-        let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+        let url = NSURL(string: "https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
         let request = NSURLRequest(
             URL: url!,
             cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
