@@ -23,10 +23,9 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UIColl
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.alwaysBounceVertical = true // Needed to fix bug where user couldn't refresh when there were no movies
         
         networkErrorView = NetworkErrorView(frame: CGRect(x: 0, y: 0, width: 375, height: 44))
-        
-        movies = [NSDictionary(), NSDictionary(), NSDictionary(), NSDictionary()]
         
         // Initialize a UIRefreshControl
         let refreshControl = UIRefreshControl()
@@ -130,11 +129,11 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UIColl
                     self.movies = responseDictionary["results"] as? [NSDictionary]
                 }
             } else {
-                if self.movies == nil {
-                    self.movies = [NSDictionary(), NSDictionary(), NSDictionary(), NSDictionary()]
-                }
-                self.networkErrorView.alpha = 1
-                UIView.animateWithDuration(1, delay:3, options:UIViewAnimationOptions.TransitionFlipFromTop, animations: {
+                UIView.animateWithDuration(0.3, delay:0, options:UIViewAnimationOptions.TransitionFlipFromTop, animations: {
+                    self.networkErrorView.alpha = 1
+                    }, completion: { finished in
+                })
+                UIView.animateWithDuration(0.3, delay:3.3, options:UIViewAnimationOptions.TransitionFlipFromTop, animations: {
                     self.networkErrorView.alpha = 0
                     }, completion: { finished in
                 })
