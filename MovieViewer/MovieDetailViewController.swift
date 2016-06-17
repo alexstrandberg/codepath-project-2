@@ -10,15 +10,31 @@ import UIKit
 import AFNetworking
 
 class MovieDetailViewController: UIViewController {
-    
     @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var infoView: UIView!
+    
     var posterURLLow: NSURL?
     var posterURLHigh: NSURL?
+    var movieTitle: String?
+    var moviedOverview: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let title = movieTitle {
+            self.navigationItem.title = title
+        }
+        
+        if let overview = moviedOverview {
+            overviewLabel.text = overview
+            overviewLabel.sizeToFit()
+        }
+        
+        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: infoView.frame.origin.y + infoView.frame.size.height)
+        
         if let posterURLLow = posterURLLow, posterURLHigh = posterURLHigh {
             let smallImageRequest = NSURLRequest(URL: posterURLLow)
             let largeImageRequest = NSURLRequest(URL: posterURLHigh)
