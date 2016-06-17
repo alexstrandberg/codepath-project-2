@@ -4,7 +4,7 @@ Movie Viewer is a movies app using the [The Movie Database API](http://docs.them
 
 Submitted by: Alexander Strandberg
 
-Time spent: 14 hours spent in total
+Time spent: 16 hours spent in total
 
 ## User Stories
 
@@ -29,6 +29,8 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
+- [X] Tab Bar Controller - Now Playing and Top Rated tabs
+- [X] Movie Title and Description on detail page with large movie poster
 - [ ] List anything else that you can get done to improve the app functionality!
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
@@ -40,7 +42,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/vASdJDe.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/wc66EyQ.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

@@ -15,9 +15,10 @@
 		CF4A8E311D11F02800017D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF4A8E301D11F02800017D21 /* Assets.xcassets */; };
 		CF4A8E341D11F02800017D21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF4A8E321D11F02800017D21 /* LaunchScreen.storyboard */; };
 		CF4A8E3C1D11F09400017D21 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A8E3B1D11F09400017D21 /* MoviesViewController.swift */; };
-		CF72E0101D13590700614703 /* blankImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CF72E00F1D13590700614703 /* blankImage.png */; };
 		CF72E0121D135AB600614703 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF72E0111D135AB600614703 /* MovieDetailViewController.swift */; };
 		CF9FFF2E1D120B3D00C54CF2 /* networkErrorIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9FFF2D1D120B3D00C54CF2 /* networkErrorIcon.png */; };
+		CFF95FB41D149BFC0033E676 /* nowPlayingIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF95FB31D149BFC0033E676 /* nowPlayingIcon.png */; };
+		CFF95FB81D149D0D0033E676 /* topRatedIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF95FB71D149D0D0033E676 /* topRatedIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,9 +33,10 @@
 		CF4A8E331D11F02800017D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF4A8E351D11F02800017D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF4A8E3B1D11F09400017D21 /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoviesViewController.swift; path = ../MoviesViewController.swift; sourceTree = "<group>"; };
-		CF72E00F1D13590700614703 /* blankImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blankImage.png; sourceTree = "<group>"; };
 		CF72E0111D135AB600614703 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		CF9FFF2D1D120B3D00C54CF2 /* networkErrorIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = networkErrorIcon.png; sourceTree = "<group>"; };
+		CFF95FB31D149BFC0033E676 /* nowPlayingIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nowPlayingIcon.png; sourceTree = "<group>"; };
+		CFF95FB71D149D0D0033E676 /* topRatedIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topRatedIcon.png; sourceTree = "<group>"; };
 		DA22B94FDF168EDC235D8DE6 /* Pods_MovieViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -113,7 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				CF9FFF2D1D120B3D00C54CF2 /* networkErrorIcon.png */,
-				CF72E00F1D13590700614703 /* blankImage.png */,
+				CFF95FB31D149BFC0033E676 /* nowPlayingIcon.png */,
+				CFF95FB71D149D0D0033E676 /* topRatedIcon.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -189,9 +192,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF9FFF2E1D120B3D00C54CF2 /* networkErrorIcon.png in Resources */,
+				CFF95FB81D149D0D0033E676 /* topRatedIcon.png in Resources */,
 				CF4A8E341D11F02800017D21 /* LaunchScreen.storyboard in Resources */,
 				CF4A8E311D11F02800017D21 /* Assets.xcassets in Resources */,
-				CF72E0101D13590700614703 /* blankImage.png in Resources */,
+				CFF95FB41D149BFC0033E676 /* nowPlayingIcon.png in Resources */,
 				CF4A8E2F1D11F02800017D21 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
