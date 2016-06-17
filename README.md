@@ -4,7 +4,7 @@ Movie Viewer is a movies app using the [The Movie Database API](http://docs.them
 
 Submitted by: Alexander Strandberg
 
-Time spent: 12 hours spent in total
+Time spent: 14 hours spent in total
 
 ## User Stories
 
@@ -19,7 +19,7 @@ The following **optional** features are implemented:
 
 - [X] User sees an error message when there's a networking error.
 - [X] Movies are displayed using a CollectionView instead of a TableView.
-- [ ] User can search for a movie.
+- [X] User can search for a movie.
 - [X] All images fade in as they are loading.
 - [X] User can view the large movie poster by tapping on a cell.
 - [X] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.

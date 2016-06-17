@@ -10,11 +10,14 @@ import UIKit
 import AFNetworking
 import MBProgressHUD
 
-class MoviesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class MoviesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var networkErrorView: NetworkErrorView!
     
     var movies: [NSDictionary]?
+    var filteredMovies: [NSDictionary]?
     
     var firstLoadDone = false
     
@@ -24,6 +27,8 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UIColl
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = true // Needed to fix bug where user couldn't refresh when there were no movies
+        
+        searchBar.delegate = self
         
         networkErrorView = NetworkErrorView(frame: CGRect(x: 0, y: 0, width: 375, height: 44))
         
@@ -41,8 +46,8 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let movies = movies {
-            return movies.count
+        if let filteredMovies = filteredMovies {
+            return filteredMovies.count
         }
         return 0
     }
@@ -50,7 +55,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MovieCell", forIndexPath: indexPath) as! MovieCell
         
-        let movie = movies![indexPath.row]
+        let movie = filteredMovies![indexPath.row]
         
         if let posterPath = movie["poster_path"] as? String {
             let posterBaseURL = "http://image.tmdb.org/t/p/w500"
@@ -127,6 +132,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UIColl
                 if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                     data, options:[]) as? NSDictionary {
                     self.movies = responseDictionary["results"] as? [NSDictionary]
+                    self.filteredMovies = self.movies
                 }
             } else {
                 UIView.animateWithDuration(0.3, delay:0, options:UIViewAnimationOptions.TransitionFlipFromTop, animations: {
@@ -145,8 +151,60 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UIColl
             // Tell the refreshControl to stop spinning
             refreshControl.endRefreshing()
             
+            if let text = self.searchBar.text {
+                self.filterData(text)
+            }
+            
         });
         task.resume()
+    }
+    
+    // This method updates filteredMovies based on the text in the Search Box
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        filterData(searchText)
+    }
+    
+    func filterData(searchText: String) {
+        // When there is no text, filteredData is the same as the original data
+        if searchText.isEmpty {
+            filteredMovies = movies
+        } else {
+            // The user has entered text into the search box
+            // Use the filter method to iterate over all items in the data array
+            // For each item, return true if the item should be included and false if the
+            // item should NOT be included
+            if let movies = movies {
+                filteredMovies = movies.filter({(movie: NSDictionary) -> Bool in
+                    // If title matches the searchText, return true to include it
+                    if let title = movie["title"] as? String {
+                        if title.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil {
+                            return true
+                        } else {
+                            return false
+                        }
+                    } else {
+                        return false
+                    }
+                })
+            }
+        }
+        collectionView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        filterData("")
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.showsCancelButton = false
     }
     
      // MARK: - Navigation
@@ -158,7 +216,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UIColl
         let vc = segue.destinationViewController as! MovieDetailViewController
         let indexPath = collectionView.indexPathForCell(sender as! UICollectionViewCell)
         
-        let movie = movies![indexPath!.row]
+        let movie = filteredMovies![indexPath!.row]
         
         vc.movieTitle = movie["title"] as? String
         vc.moviedOverview = movie["overview"] as? String
