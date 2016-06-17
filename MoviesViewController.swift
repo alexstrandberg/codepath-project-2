@@ -160,6 +160,9 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         let movie = movies![indexPath!.row]
         
+        vc.movieTitle = movie["title"] as? String
+        vc.moviedOverview = movie["overview"] as? String
+        
         if let posterPath = movie["poster_path"] as? String {
             let posterBaseURLLow = "http://image.tmdb.org/t/p/w45"
             let posterBaseURLHigh = "http://image.tmdb.org/t/p/original"
