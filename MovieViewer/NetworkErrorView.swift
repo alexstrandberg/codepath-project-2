@@ -17,7 +17,7 @@ class NetworkErrorView: UIView {
         super.init(frame:frame)
         
         alpha = 0
-        backgroundColor = UIColor.redColor()
+        backgroundColor = UIColor.grayColor()
         
         networkLabel = UILabel(frame: CGRect(x: 162, y: 11, width: 119, height: 21))
         networkLabel.text = "Network Error"
