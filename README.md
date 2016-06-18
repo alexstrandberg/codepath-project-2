@@ -25,7 +25,7 @@ The following **optional** features are implemented:
 - [X] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
 - [ ] Customize the selection effect of the cell.
 - [ ] Customize the navigation bar.
-- [ ] Customize the UI.
+- [X] Customize the UI.
 
 The following **additional** features are implemented:
 
